@@ -17,8 +17,8 @@ try:
     api_id = int(os.environ.get("APP_ID"))
     api_hash = os.environ.get("APP_HASH")
     token = os.environ.get("BOT_TOKEN")
-    channel = os.environ.get("SUB_CHANNEL", "INDIANBINNER")    
-    c_url = os.environ.get("CHANNEL_URL", "https://t.me/INDIANBINNER")        
+    channel = os.environ.get("SUB_CHANNEL", "ExploitzBots")    
+    c_url = os.environ.get("CHANNEL_URL", "https://t.me/ExploitzBots")        
 except:
     print("Environment variables missing, i am quitting kthnxbye")
     exit(1)
@@ -33,7 +33,7 @@ logging.basicConfig(
 )
 log = logging.getLogger(__name__)
 log.info("--------------------------------------")
-log.info("|> Hotstar Checker Bot By @GodDrick <|")
+log.info("|> Hotstar Checker Bot By @ExploitzBots <|")
 log.info("--------------------------------------")
 log.info("Pyro Version: " + __version__)
 log.setLevel(logging.WARNING)
@@ -48,7 +48,7 @@ async def check(user, message):
         await HotstarChecker.get_chat_member(channel, user)
         return True
     except UserNotParticipant:
-        await message.reply("**❌ --USER NOT PARTICIPANT-- ❌**\n\n`In Order To Use Me, You Have To Join The Channel Given Below...`", 
+        await message.reply("**❌ --Your Not Joined 🙁-- ❌**\n\n`In Order To Use Me, You Have To Join The Channel Given Below...`", 
                             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Join Channel", url=f"{c_url}")]]))
         return False
     except ChatAdminRequired:
@@ -98,7 +98,7 @@ async def checker(bot: HotstarChecker, message: Message):
                         final += f"\n- <code>{account}</code>: Invalid ❌"
                         bad += 1
                 except:
-                    final += f"\n- <code>{account}</code>: Invalid Format ❌"
+                    final += f"\n- <code>{account}</code>: Ah Shit Invalid Format ❌ ,"
                     bad += 1
                     
             final  += f"\n\n<b>Summary:</b>\n<b>Total Accs:</b> <code>{len(combo_list)}</code>\n<b>Hits:</b> <code>{hits}</code>\n<b>Bads:</b> <code>{bad}</code>\n\n<b>Checked by {message.from_user.mention}</b>\n<i>With ❤️ By @GodDrick</i>"        
@@ -247,7 +247,7 @@ async def start(_, message: Message):
     checker = await check(message.from_user.id, message)
     if checker is False:
         return    
-    await message.reply("Hello, I am a simple hotstar checker bot created by @GodDrick! Type /help to get to know about my usages!")
+    await message.reply("Hello, I am a simple hotstar checker bot created by @ExploitzBots! Type /help to get to know about my usages!")
     
     
 @HotstarChecker.on_message(filters.command("help"))
